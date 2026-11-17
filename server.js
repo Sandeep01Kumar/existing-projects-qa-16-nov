@@ -6,6 +6,7 @@ const port = 3000;
 const server = http.createServer((req, res) => {
   if (req.url === '/status') {
     res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Content-Length', 15);
     return res.end(JSON.stringify({ status: 'ok' }));
   }
   res.statusCode = 200;
