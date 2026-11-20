@@ -5,9 +5,10 @@ const port = 3000;
 
 const server = http.createServer((req, res) => {
   if (req.url === '/status') {
+    const body = JSON.stringify({ status: 'ok' });
     res.setHeader('Content-Type', 'application/json');
-    res.setHeader('Content-Length', 15);
-    return res.end(JSON.stringify({ status: 'ok' }));
+    res.setHeader('Content-Length', Buffer.byteLength(body));
+    return res.end(body);
   }
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
